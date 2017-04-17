@@ -15,6 +15,10 @@
     mongoose.connect('mongodb://admin:7y3LCtJLJ@ds163010.mlab.com:63010/jepdb');
     var Message = require('./models/message');
 
+    app.get('/favicon.ico', function(req, res) {
+        res.send(204);
+    });
+
     router.route('/')
         .get(function (req, res) {
             res.sendFile(__dirname + '/index.html');
