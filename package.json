@@ -1,11 +1,30 @@
 {
-  "name": "HelloWorldApp",
-  "version": "0.0.1",
+  "name": "chatapp",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "body-parser": "~1.15.1",
     "express": "~4.13.4",
     "morgan": "~1.7.0",
     "mongoose": "~4.5.10"
-  }
+  },
+  "description": "Chat Application",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fissan88/chatapp.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "Jeppe Lindstrøm Jensen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fissan88/chatapp/issues"
+  },
+  "homepage": "https://github.com/fissan88/chatapp#readme"
 }
