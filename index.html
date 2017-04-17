@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<textarea id="name"></textarea><br>
+<textarea id="text"></textarea><br>
+<input id="input">
+<button id="send">Send</button><br>
+<button id="get">Get</button>
+
+<script>
+    var lastLoadedMsgIndex = 0;
+    $(document).ready(function() {
+        var url = "http://localhost:8080";
+
+        $("#send").click(function() {
+            var text = $("#input").val();
+            var name = $("#name").val();
+            if(text) {
+                $.post({
+                    type: 'POST',
+                    url: url + '/messages',
+                    datatype: 'json',
+                    data: {'msg': text, 'name': name}
+                });
+                updateChat();
+            } else {
+                alert("There's no text to send...")
+            }
+        });
+
+        $("#get").click(function() {
+           updateChat();
+        });
+
+        function updateChat() {
+                $.get(url + "/messages/", function (result) {
+                    for(var i = lastLoadedMsgIndex; i < result.length; i++) {
+                        $("#text").append(result[i].name
+                            + ": " + result[i].message
+                            + " (" + result[i].time + ")\n");
+                    }
+                    lastLoadedMsgIndex = result.length;
+            });
+        }
+    });
+</script>
+</body>
+</html>
